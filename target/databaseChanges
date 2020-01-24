@@ -1,0 +1,158 @@
+create table user_login(
+	id serial,
+	user_id text,
+	full_name text,
+	email_id text,
+	mobile_number text,
+	user_name text,
+	password text,
+	mobile_verified boolean default false,
+	image_url text,
+	date timestamp,
+	account_type text
+);
+
+create table user_detail(
+	id serial,
+	user_id text
+);
+
+create table companies(
+	id serial,
+	company_id text,
+	job_description text,
+	job_title text,
+	required_experince text,
+	date timestamp,
+	latitude text,
+	longitude text,
+	company_name text,
+	responsibilties text,
+	city text,
+	state text,
+	skills_you_have text,
+	skills_required text
+);
+
+
+create table resume_user_detail(
+	id serial,
+	user_id text,
+	first_name text,
+	last_name text,
+	profession text,
+	address text,
+	city text,
+	state text,
+	zip text,
+	mobile_number text,
+	email_id text,
+	about text
+);
+
+create table resume_work_detail(
+	id serial,
+	position_id text,
+	user_id text,
+	job_title text,
+	employer text,
+	start_date text,
+	end_date text,
+	description text,
+	updated_at timestamp	
+);
+
+create table resume_education_detail(
+	id serial,
+	user_id text,
+	education_id text,
+	school_name text,
+	school_location text,
+	degree text,
+	field_of_study text,
+	graduation_start_date text,
+	graduation_end_date text,
+	updated_at timestamp
+);
+
+
+create table resume_skills(
+	id serial,
+	user_id text,
+	skill_id text,
+	skill_name text,
+	skill_level text,
+	updated_at timestamp
+);
+
+
+alter table user_login add column resume_form_status int default 1;
+alter table companies add column image_url text;
+alter table companies add column skills text;
+
+alter table resume_user_detail add column updated_at timestamp;
+
+
+create table company_applied_user(
+	id serial,
+	company_id text,
+	user_id text,
+	applied_date timestamp
+);
+
+
+create table company_detail(
+	id serial,
+	company_id text,
+	company_name text,
+	email_id text,
+	password text,
+	address text,
+	image_url text,
+	latitude text,
+	longitude text,
+	description text
+);
+
+create table user_preferences(
+	id serial,
+	user_id text,
+	location text,
+	latitude text,
+	longitude text,
+	availability text,
+	skills text,
+	radius text,
+	updated_at timestamp
+);
+
+
+alter table user_login add column latitude text,add column longitude text;
+
+alter table companies add column job_id text;
+
+create table skill_category(
+	id serial,
+	category_id text,
+	category_name text,
+	date timestamp
+);
+
+alter table resume_skills add column category_id text;
+
+alter table companies add column category_id text;
+
+alter table user_preferences add column category_id text;
+alter table user_preferences add column expected_compensation text;
+
+alter table companies add column location text;
+alter table user_login add column resume_url text;
+
+
+alter table company_applied_user add column job_id text;
+
+update companies set job_id=floor(random() * 100000000 + 1)::int;
+
+alter table companies add column required_from text; 
+alter table companies add column compensation text;
+
