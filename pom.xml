@@ -122,7 +122,7 @@
 		<start-class>com.api.postgress.main.PostgressApiMain</start-class>
 		<springframework.version>4.2.2.RELEASE</springframework.version>
 		<java.version>1.8</java.version>  
-		<jackson.library>2.7.5</jackson.library>
+		<jackson.library>2.11.0</jackson.library>
 	</properties>
 	
 	<build>
